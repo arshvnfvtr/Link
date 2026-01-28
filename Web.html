@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Play Audio</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("background.jpg") center / cover no-repeat;
+  font-family: Arial, sans-serif;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+}
+
+.container img {
+  width: 150px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.container h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 15px 40px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  background: #1db954;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #17a44a;
+}
+</style>
+
+</head>
+<body>
+
+<div class="overlay">
+  <div class="container">
+    <img src="playlist.jpg">
+    <h2>Putar Playlist Musik</h2>
+    <button onclick="playAudio()">PLAY</button>
+  </div>
+</div>
+
+<audio id="audio" src="tante.mp3"></audio>
+
+<script>
+function playAudio() {
+  document.getElementById("audio").play()
+}
+</script>
+
+</body>
+</html>

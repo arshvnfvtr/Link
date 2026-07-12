@@ -18,7 +18,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px 10px 40px 10px;
+            padding: 30px 15px;
             overflow-y: auto;
             position: relative;
         }
@@ -190,32 +190,12 @@
             margin-bottom: 0;
         }
 
-        .cursor {
-            display: inline-block;
-            width: 2px;
-            height: 1.2em;
-            background-color: #ff006e;
-            margin-left: 2px;
-            animation: blink 0.7s infinite;
-            vertical-align: middle;
-        }
-
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-
         .signature {
             display: block;
             margin-top: 1.5rem;
             text-align: right;
             font-style: italic;
             color: #b3a2cf;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-
-        .signature.show-sig {
-            opacity: 1;
         }
 
         .confetti {
@@ -265,25 +245,17 @@
 
         <div class="message-box" id="msgBox">
             <div class="wishes">
-                <p id="line1"></p>
-                <p id="line2"></p>
-                <p id="line3"></p>
-                <p id="line4"></p>
-                <p id="line5"></p>
-                <span class="signature" id="sigText">- Sayang Ammi selalu 💜</span>
+                <p>Selamat ulang tahun Ammi! 🎉</p>
+                <p>Di hari yang spesial ini, saya cuman mau bilang terima kasih sudah menjadi ibu yang hebat menangani tingkahku.</p>
+                <p>Saya minta maaf atas semua kesalah yang pernahku buat yang buat Ammi sakit hati, marah, sedih, jengkel dan lain sebagainya. Mungkin saya belum bisa jadi anak yang Ammi banggakan, tapi saya akan berusahan untuk itu.</p>
+                <p>Tetap jadi ibu yang hebat Ammi, meski sulit menghadapi anak bandelmu ini, tetap semangat Ammi 😊.</p>
+                <p>Mungkin nanti saya akan meninggalkan Ammi untuk mengejar pendidikan, sekarang saya sadar Ammi membutuhkan pendamping untuk menggantikan Abi, jadi apapun keputusan Ammi saya ikhlas.</p>
+                <span class="signature">- Sayang Ammi selalu 💜</span>
             </div>
         </div>
     </div>
 
     <script>
-        const textLines = [
-            "Selamat ulang tahun Ammi! 🎉",
-            "Di hari yang spesial ini, saya cuman mau bilang terima kasih sudah menjadi ibu yang hebat menangani tingkahku.",
-            "Saya minta maaf atas semua kesalah yang pernahku buat yang buat Ammi sakit hati, marah, sedih, jengkel dan lain sebagainya. Mungkin saya belum bisa jadi anak yang Ammi banggakan, tapi saya akan berusahan untuk itu.",
-            "Tetap jadi ibu yang hebat Ammi, meski sulit menghadapi anak bandelmu ini, tetap semangat Ammi 😊.",
-            "Mungkin nanti saya akan meninggalkan Ammi untuk mengejar pendidikan, sekarang saya sadar Ammi membutuhkan pendamping untuk menggantikan Abi, jadi apapun keputusan Ammi saya ikhlas."
-        ];
-
         document.addEventListener("DOMContentLoaded", () => {
             createBackgroundStars();
         });
@@ -319,56 +291,6 @@
             btn.style.boxShadow = "0 5px 15px rgba(131, 56, 236, 0.3)";
 
             createConfetti();
-            startTypingEffect();
-        }
-
-        function startTypingEffect() {
-            let currentLine = 0;
-            let currentChar = 0;
-            
-            const cursor = document.createElement('span');
-            cursor.classList.add('cursor');
-
-            function type() {
-                if (currentLine < textLines.length) {
-                    const targetParagraph = document.getElementById(`line${currentLine + 1}`);
-                    
-                    if (currentChar === 0) {
-                        targetParagraph.appendChild(cursor);
-                    }
-
-                    const fullText = textLines[currentLine];
-                    
-                    if (currentChar < fullText.length) {
-                        cursor.before(fullText[currentChar]);
-                        currentChar++;
-                        
-                        if(window.innerHeight + window.scrollY < document.documentElement.scrollHeight) {
-                            window.scrollTo({
-                                top: document.documentElement.scrollHeight,
-                                behavior: 'smooth'
-                            });
-                        }
-                        
-                        setTimeout(type, Math.random() * 25 + 20);
-                    } else {
-                        cursor.remove();
-                        currentLine++;
-                        currentChar = 0;
-                        setTimeout(type, 300);
-                    }
-                } else {
-                    document.getElementById('sigText').classList.add('show-sig');
-                    setTimeout(() => {
-                        window.scrollTo({
-                            top: document.documentElement.scrollHeight,
-                            behavior: 'smooth'
-                        });
-                    }, 200);
-                }
-            }
-            
-            setTimeout(type, 500);
         }
 
         function createConfetti() {

@@ -1,1 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website.html</title>
+    <style>
+        /* --- RESET & BASE STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fedfe1 0%, #ecc5ca 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- CARD CONTAINER --- */
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.5s ease;
+        }
+
+        /* --- DECORATION --- */
+        .cake-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            color: #d15a7a;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- BUTTON STYLE --- */
+        .btn-trigger {
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(255, 117, 140, 0.4);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .btn-trigger:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(255, 117, 140, 0.6);
+        }
+
+        .btn-trigger:active {
+            transform: translateY(-1px);
+        }
+
+        /* --- HIDDEN CONTENT & ANIMATION --- */
+        .message-box {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 0;
+        }
+
+        .message-box.show {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 2rem;
+        }
+
+        .wishes {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border-left: 5px solid #ff758c;
+            text-align: left;
+        }
+
+        /* --- CONFETTI EFFECT --- */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0.8;
+            top: -10px;
+            z-index: 1;
+            border-radius: 50%;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="cake-icon">🎂</div>
+        <h1>Happy Birthday!</h1>
+        
+        <button class="btn-trigger" id="btnMain" onclick="showMessage()">Buka Pesan ✨</button>
+
+        <!-- Bagian kata-kata yang awalnya tersembunyi -->
+        <div class="message-box" id="msgBox">
+            <div class="wishes">
+                <p>Selamat ulang tahun! 🎉</p>
+                <br>
+                <p>Semoga di usia yang baru ini, segala impian dan cita-citamu bisa tercapai satu per satu. Tetap semangat, selalu sehat, dan dipenuhi kebahagiaan setiap harinya!</p>
+                <br>
+                <p><i>- Dari seseorang yang peduli ✨</i></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showMessage() {
+            const msgBox = document.getElementById('msgBox');
+            const btn = document.getElementById('btnMain');
+
+            // Memunculkan kotak pesan dengan class 'show'
+            msgBox.classList.add('show');
+
+            // Mengubah teks tombol atau menyembunyikannya jika perlu
+            btn.innerText = "Selesai! 💖";
+            btn.style.pointerEvents = "none"; // Menonaktifkan tombol setelah ditekan
+
+            // Menjalankan efek konfeti
+            createConfetti();
+        }
+
+        function createConfetti() {
+            const colors = ['#ff758c', '#ff7eb3', '#ffbe0b', '#fb5607', '#ff006e', '#8338ec', '#3a86ff'];
+            
+            // Membuat 100 potongan konfeti secara acak
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                
+                // Mengatur posisi horizontal acak
+                confetti.style.left = Math.random() * 100 + 'vw';
+                
+                // Mengatur warna acak dari list
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Mengatur ukuran acak
+                const size = Math.random() * 8 + 5 + 'px';
+                confetti.style.width = size;
+                confetti.style.height = size;
+                
+                // Mengatur durasi jatuh acak (antara 2 sampai 5 detik)
+                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                
+                // Mengatur delay acak agar tidak jatuh bersamaan
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+
+                // Bentuk acak (bulat atau kotak)
+                if (Math.random() > 0.5) {
+                    confetti.style.borderRadius = '0';
+                }
+
+                document.body.appendChild(confetti);
+
+                // Hapus elemen dari DOM setelah animasi selesai agar tidak membebani memori
+                confetti.addEventListener('animationend', () => {
+                    confetti.remove();
+                });
+            }
+        }
+    </script>
+</body>
+</html>

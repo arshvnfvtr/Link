@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website</title>
+    <title>Website.html</title>
     <style>
         * {
             box-sizing: border-box;
@@ -168,7 +168,7 @@
         }
 
         .message-box.show {
-            max-height: 600px;
+            max-height: 800px;
             opacity: 1;
             margin-top: 2rem;
         }
@@ -187,7 +187,7 @@
         }
 
         .wishes p {
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             min-height: 1.7em;
         }
 
@@ -207,12 +207,6 @@
 
         @keyframes blink {
             50% { opacity: 0; }
-        }
-
-        .highlight-text {
-            color: #c792ea;
-            font-weight: 600;
-            text-shadow: 0 0 8px rgba(199, 146, 234, 0.5);
         }
 
         .signature {
@@ -280,7 +274,8 @@
                 <p id="line2"></p>
                 <p id="line3"></p>
                 <p id="line4"></p>
-                <span class="signature" id="sigText">- Alvin</span>
+                <p id="line5"></p>
+                <span class="signature" id="sigText">- Sayang Ammi selalu 💜</span>
             </div>
         </div>
     </div>
@@ -288,10 +283,10 @@
     <script>
         const textLines = [
             "Selamat ulang tahun Ammi! 🎉",
-            "Di hari yang spesial ini, saya cuman mau bilang terima kasih sudah menjadi ibu yang hebat menangani tingkahku",
-            "Saya minta maaf atas semua kesalah yang pernahku buat yang buat Ammi sakit hati, marah, sedih, jengkel dan lain sebagainya. Mungkin saya belum bisa jadi anak yang Ammi banggakan, tapi saya akan berusahan untuk itu",
-            "Tetap jadi ibu yang hebat Ammi, meski sulit menghadapi anak bandelmu ini, tetap semangat Ammi 😊",
-            "Mungkin nanti saya akan meninggalkan Ammi untuk mengejar pendidikan, sekarang saya sadar Ammi membutuhkan pendamping untuk menggantikan Abi, jadi apapun keputusan Ammi saya ikhlas"
+            "Di hari yang spesial ini, saya cuman mau bilang terima kasih sudah menjadi ibu yang hebat menangani tingkahku.",
+            "Saya minta maaf atas semua kesalah yang pernahku buat yang buat Ammi sakit hati, marah, sedih, jengkel dan lain sebagainya. Mungkin saya belum bisa jadi anak yang Ammi banggakan, tapi saya akan berusahan untuk itu.",
+            "Tetap jadi ibu yang hebat Ammi, meski sulit menghadapi anak bandelmu ini, tetap semangat Ammi 😊.",
+            "Mungkin nanti saya akan meninggalkan Ammi untuk mengejar pendidikan, sekarang saya sadar Ammi membutuhkan pendamping untuk menggantikan Abi, jadi apapun keputusan Ammi saya ikhlas."
         ];
 
         document.addEventListener("DOMContentLoaded", () => {
@@ -318,7 +313,7 @@
             const title = document.getElementById('mainTitle');
             const cake = document.getElementById('cakeIcon');
 
-            title.innerText = "Happy Birthday!";
+            title.innerText = "Happy Birthday Ammi!";
             cake.innerText = "🎂";
 
             msgBox.classList.add('show');

@@ -116,6 +116,7 @@
             font-weight: 700;
             letter-spacing: 1px;
             text-shadow: 0 0 15px rgba(131, 56, 236, 0.6);
+            transition: all 0.5s ease;
         }
 
         .btn-trigger {
@@ -251,10 +252,10 @@
 
     <div class="card">
         <div class="cake-container">
-            <div class="cake-icon">🔮</div>
+            <div class="cake-icon" id="cakeIcon">🔮</div>
             <div class="sparkle-glow"></div>
         </div>
-        <h1>Happy Birthday!</h1>
+        <h1 id="mainTitle">Ada Kejutan Di Sini ⬇</h1>
         
         <button class="btn-trigger" id="btnMain" onclick="showMessage()">Buka Kejutan ✨</button>
 
@@ -291,6 +292,11 @@
         function showMessage() {
             const msgBox = document.getElementById('msgBox');
             const btn = document.getElementById('btnMain');
+            const title = document.getElementById('mainTitle');
+            const cake = document.getElementById('cakeIcon');
+
+            title.innerText = "Happy Birthday!";
+            cake.innerText = "🎂";
 
             msgBox.classList.add('show');
 
